@@ -26,12 +26,15 @@
 </thead>
 <tbody>
 {% for student in students %}
-<tr>
-	<td>{{student.name}}</td>
-	<td>{{student.surname}}</td>
-	<td>{{student.room}}</td>
-	<td>01.02.12 (заглушка пока)</td>
-</tr>
+	{% if student.date.date() == current_date %}
+		<tr bgcolor="#FFFF00">
+			{% endif %}
+			<td>{{student.name}}</td>
+			<td>{{student.surname}}</td>
+			<td>{{student.room}}</td>
+			<td>{{student.date.date()}}</td>
+		</tr>
+
 {% endfor %}
 </tbody>
 </table>
