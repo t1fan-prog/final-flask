@@ -19,6 +19,17 @@ def schedule():
     return render_template('schedule.html', title='Рассписание', students=students, current_date=current_date)
 
 
+@app.route('/problem')
+def problem():
+    try:
+        problems = Problems.query.order_by(Problems.date).all()
+        current_date = datetime.now().date()
+    except Exception:
+        logger.exception(f'Exeption occured {traceback.extract_stack()[-1][2]}', exc_info=True)
+        return 500
+    return render_template('problems.html', title='Список обращений', problems=problems, current_date=current_date)
+
+
 @app.route('/api/student', methods=['GET'])
 def get_student():
     """Получение списка всех студентов. Если же есть параметр ?chat-id={id} - возвращает сущность Student с
