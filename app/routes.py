@@ -110,7 +110,7 @@ def delete():
             return jsonify({'status': '250 OK', 'chat_id': latest_duty_student})
         else:
             return jsonify({'status': '250 OK', 'chat_id': latest_duty_student.chat_id})
-    return jsonify({'status': '255 OK'})
+    return jsonify({'status': '404'})
 
 
 @app.route('/api/update', methods=['PATCH'])
